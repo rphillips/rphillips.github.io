@@ -1,0 +1,25 @@
+# The URL the site will be built for
+base_url = "https://trolocsis.com"
+title = "Ryan's Blog"
+theme = "xyblag"
+
+taxonomies = [
+    # You can enable/disable RSS
+    {name = "categories", rss = true},
+    {name = "tags", rss = true},
+]
+
+highlight_code = true
+highlight_theme = "material-dark"
+generate_feed = true
+compile_sass = true
+build_search_index = false
+
+[extra]
+author = "Ryan Phillips"
+
+blog_menu = [
+    {url = "$BASE_URL/categories", name = "Categories"},
+    {url = "$BASE_URL/tags", name = "Tags"},
+    {url = "$BASE_URL/about", name = "About"},
+]
