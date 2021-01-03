@@ -11,7 +11,7 @@ taxonomies = [
 ]
 
 highlight_code = true
-highlight_theme = "material-dark"
+highlight_theme = "ayu-dark"
 generate_feed = true
 compile_sass = true
 build_search_index = false
