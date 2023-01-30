@@ -1,18 +1,12 @@
 # The URL the site will be built for
 base_url = "https://trolocsis.com"
 title = "Ryan's Blog"
-theme = "xyblag"
+theme = "apollo"
 feed_filename = "rss.xml"
-
-taxonomies = [
-    # You can enable/disable RSS
-    {name = "categories", rss = true},
-    {name = "tags", rss = true},
-]
-
+minify_html = true
 generate_feed = true
 compile_sass = true
-build_search_index = false
+build_search_index = true
 
 [markdown]
 highlight_code = true
@@ -20,10 +14,23 @@ highlight_theme = "ayu-dark"
 
 [extra]
 author = "Ryan Phillips"
+use_cdn = false
+theme = "auto"
 
 blog_menu = [
     {url = "$BASE_URL/categories", name = "Categories"},
     {url = "$BASE_URL/tags", name = "Tags"},
     {url = "$BASE_URL/about", name = "About"},
     {url = "https://github.com/rphillips", name = "Github"},
+]
+
+socials = [
+{ name= "twitter", url= "https://twitter.com/rphillips", icon= "twitter" },
+{ name= "github", url= "https://github.com/rphillips", icon = "github" },
+]
+
+ menu = [
+  { name = "/posts", url= "/posts", weight= 1 },
+  { name= "/projects", url= "/projects", weight= 2 },
+  { name= "/about", url= "/about", weight= 3 },
 ]

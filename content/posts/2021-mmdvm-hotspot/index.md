@@ -1,9 +1,6 @@
 +++
 title = "Sainsmart Ham Radio Hotspot"
 date = 2021-01-02
-[taxonomies]
-tags = [ "hamradio" ] 
-categories = [ "tech" ]
 +++
 
 {{ resize_image(path="posts/2021-mmdvm-hotspot/sainsmart_hotspot.jpg", width=150, height=0, op="fit_width") }}
