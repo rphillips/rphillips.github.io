@@ -2,9 +2,9 @@
 base_url = "https://trolocsis.com"
 title = "Ryan's Blog"
 theme = "apollo"
-feed_filename = "rss.xml"
+feed_filenames = ["rss.xml"]
 minify_html = true
-generate_feed = true
+generate_feeds = true
 compile_sass = true
 build_search_index = true
 
