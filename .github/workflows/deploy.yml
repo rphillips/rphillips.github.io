@@ -2,14 +2,14 @@ on: push
 name: Build and deploy GH Pages
 jobs:
   build:
-    name: shalzz/zola-deploy-action
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
     # Checkout
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     # Build & deploy
-    - name: shalzz/zola-deploy-action
-      uses: shalzz/zola-deploy-action@master
+    - name: build_and_deploy
+      uses: shalzz/zola-deploy-action@v0.17.2
       env:
         # Target branch
         PAGES_BRANCH: gh-pages
