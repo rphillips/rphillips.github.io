@@ -16,6 +16,7 @@ highlight_theme = "ayu-dark"
 author = "Ryan Phillips"
 use_cdn = false
 theme = "auto"
+comment = ""
 
 blog_menu = [
   { url = "$BASE_URL/categories", name = "Categories" },
