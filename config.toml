@@ -7,6 +7,11 @@ minify_html = true
 generate_feeds = true
 compile_sass = true
 build_search_index = true
+taxonomies = [{ name = "tags", feed = true, paginate_by = 10 }]
+
+[slugify]
+paths = "on"
+taxonomies = "on"
 
 [markdown]
 highlight_code = true
@@ -14,8 +19,12 @@ highlight_theme = "ayu-dark"
 
 [extra]
 author = "Ryan Phillips"
+toc = true
 use_cdn = false
 theme = "auto"
+fancy_code = true
+mathjax = true
+mathjax_dollar_inline_enable = true
 comment = ""
 
 blog_menu = [
