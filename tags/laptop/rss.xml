@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Ryan&#x27;s Blog - laptop</title>
+      <link>https://trolocsis.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://trolocsis.com/tags/laptop/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 29 May 2018 15:11:50 -0500</lastBuildDate>
+      <item>
+          <title>Laptop Throttling</title>
+          <pubDate>Tue, 29 May 2018 15:11:50 -0500</pubDate>
+          <author>Unknown</author>
+          <link>https://trolocsis.com/posts/20180529-laptop-throttling/</link>
+          <guid>https://trolocsis.com/posts/20180529-laptop-throttling/</guid>
+          <description xml:base="https://trolocsis.com/posts/20180529-laptop-throttling/">&lt;p&gt;I installed Fedora 28 and Archlinux onto my development machine; a Lenovo
+Thinkpad t470s. Generally both distributions ran perfectly fine, but I did run
+into a problem on battery power. On battery power my CPUs would not go over 800
+Mhz. By plugging in the laptop the CPUs would spin up to their usual 3 Ghz rating.&lt;&#x2F;p&gt;
+&lt;p&gt;Then I found this archlinux power management throttling article
+&lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Lenovo_ThinkPad_X1_Carbon_(Gen_6)#Power_management.2FThrottling_issues&quot;&gt;Lenovo_ThinkPad_X1_Carbon_(Gen_6)#Power_management.2FThrottling_issues&lt;&#x2F;a&gt;.
+Exactly what I was seeing, but on the t470s.&lt;&#x2F;p&gt;
+&lt;p&gt;I installed msr-tools and modprobed the module:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#0f1419;color:#bfbab0;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#ffb454;&quot;&gt;pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f29718;&quot;&gt; -S&lt;&#x2F;span&gt;&lt;span&gt; msr-tools
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ffb454;&quot;&gt;modprobe&lt;&#x2F;span&gt;&lt;span&gt; msr
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Then ran the wrmsr utility to set the CPU registers manually:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#0f1419;color:#bfbab0;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#ffb454;&quot;&gt;wrmsr&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f29718;&quot;&gt; -a&lt;&#x2F;span&gt;&lt;span&gt; 0x1a2 0x3000000 &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5c6773;&quot;&gt;# which sets the offset to 3 C, so the new trip point is 97 C 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;While on battery power, the CPUs are scaling to their correct clock frequencies.
+I suspect this might be a bios issue, since it is happening on the X1 Carbon
+&lt;em&gt;and&lt;&#x2F;em&gt; the t470s.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

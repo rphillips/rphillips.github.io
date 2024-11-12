@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Ryan&#x27;s Blog - hamradio</title>
+    <link rel="self" type="application/atom+xml" href="https://trolocsis.com/tags/hamradio/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://trolocsis.com"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-01-02T00:00:00+00:00</updated>
+    <id>https://trolocsis.com/tags/hamradio/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Sainsmart Ham Radio Hotspot</title>
+        <published>2021-01-02T00:00:00+00:00</published>
+        <updated>2021-01-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://trolocsis.com/posts/2021-mmdvm-hotspot/"/>
+        <id>https://trolocsis.com/posts/2021-mmdvm-hotspot/</id>
+        
+        <content type="html" xml:base="https://trolocsis.com/posts/2021-mmdvm-hotspot/">
+&lt;img src=&quot;https:&amp;#x2F;&amp;#x2F;trolocsis.com&amp;#x2F;processed_images&amp;#x2F;sainsmart_hotspot.3f5f0f695059f4ba.jpg&quot; &#x2F;&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;&#x2F;h2&gt;
+&lt;p&gt;Ham Radio Hotspots have gotten extremely popular. These hotspots allow an
+operator to connect to DMR, Yaesu Fusion, and D-Star digital networks without a
+local repeater nearby. Many operators build their own hotspot with a Raspberry
+Pi, though, recently, I obtained a &lt;a href=&quot;https:&#x2F;&#x2F;www.amazon.com&#x2F;gp&#x2F;product&#x2F;B07JM3WR1G&#x2F;ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&amp;amp;psc=1&quot;&gt;Sainsmart
+Hotspot&lt;&#x2F;a&gt;
+to try out these digital modes.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;information&quot;&gt;Information&lt;&#x2F;h2&gt;
+&lt;p&gt;The &lt;a href=&quot;https:&#x2F;&#x2F;trolocsis.com&#x2F;posts&#x2F;2021-mmdvm-hotspot&#x2F;Instructions-MMDVMHost-Manual.pdf&quot;&gt;manual&lt;&#x2F;a&gt; is
+hard to find. The key information found within the manual are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Simplex repeater&lt;&#x2F;li&gt;
+&lt;li&gt;Setting up the wifi&lt;&#x2F;li&gt;
+&lt;li&gt;The radio hardware: &lt;code&gt;STM32-DVM&#x2F;MMDVM_HS-Raspberry Pi Hat (GPIO)&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;The LED setup info: &lt;code&gt;OLED Type 3&lt;&#x2F;code&gt; &#x2F; &lt;code&gt;&#x2F;dev&#x2F;ttyAMA0&lt;&#x2F;code&gt; &#x2F; &lt;code&gt;G4KLX&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;radio-firmware&quot;&gt;Radio Firmware&lt;&#x2F;h2&gt;
+&lt;p&gt;Running &lt;code&gt;pistar-findmodem&lt;&#x2F;code&gt; is extremely important to figure out which modem
+is on your hotspot. Flashing the wrong firmware will leave the modem in a bad
+state, though reflashing the correct firmware appears to work.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#0f1419;color:#bfbab0;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5c6773;&quot;&gt;# sudo pistar-findmodem
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ffb454;&quot;&gt;Detected&lt;&#x2F;span&gt;&lt;span&gt; MMDVM_HS (GPIO)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f07178;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;dev&#x2F;ttyAMA0 (MMDVM_HS_Hat-v1.5.2 20201108 14.7456MHz ADF7021 FW by CA6JAU GitID &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5c6773;&quot;&gt;#89daa20FF37066A3432434257012227)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;My hotspot has the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;juribeparada&#x2F;MMDVM_HS&quot;&gt;MMDVM_HS_Hat v1.5.2 14.7456&lt;&#x2F;a&gt;
+modem and firmware. MMDVM_HS_Hat comes in at least two versions: 14.7456 MHz
+or 12.288 MHz. Make sure to note which frequency is yours!&lt;&#x2F;p&gt;
+&lt;p&gt;If you have an older version of the firmware it can be upgraded with:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#0f1419;color:#bfbab0;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5c6773;&quot;&gt;# sudo pistar-mmdvmhshatflash hs_hat
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;&#x2F;h2&gt;
+&lt;p&gt;Pi-Star allows for multiple digital modes to be enabled. This is a great
+feature since it allows us to leverage the different modes. On a simplex
+hotspot only one mode can be transmitting or receiving at a time.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yaesu-fusion&quot;&gt;Yaesu Fusion&lt;&#x2F;h3&gt;
+&lt;p&gt;Most Yaesu radios have built in Fusion or Wires-X buttons. The hotspot might
+not register the Wires-X button press, since it polls the modem for which
+mode (DMR, D-Star, or Fusion) it should be in.&lt;&#x2F;p&gt;
+&lt;p&gt;I have found that keying up for around 1.5 seconds will set the YSF mode, and
+then pressing the Wires-X button will work. The RF Hangtime defaults to 20
+seconds, and bumping this up to 60 seconds might be beneficial to some.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;&#x2F;h2&gt;
+&lt;p&gt;There is still an issue with joining a room. My FT-3D radio shows an FCS room
+when joining a YSF room. I opened a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;g4klx&#x2F;YSFClients&#x2F;issues&#x2F;240&quot;&gt;Github
+Issue&lt;&#x2F;a&gt; to track it.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
