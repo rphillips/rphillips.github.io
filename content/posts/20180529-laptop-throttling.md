@@ -1,6 +1,8 @@
 +++
 title = "Laptop Throttling"
 date = 2018-05-29T15:11:50-05:00
+[taxonomies]
+tags=["laptop"]
 +++
 
 I installed Fedora 28 and Archlinux onto my development machine; a Lenovo
